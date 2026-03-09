@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Midnight Raid Tactics</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<div class="sidebar">
+
+<h1>MIDNIGHT RAIDS</h1>
+
+<ul class="raidButtons">
+
+<li class="raidBtn voidspire" onclick="openRaid('voidspire')">
+<span>The Voidspire</span>
+</li>
+
+<li class="raidBtn dreamrift" onclick="openRaid('dreamrift')">
+<span>The Dreamrift</span>
+</li>
+
+<li class="raidBtn march" onclick="openRaid('queldanas')">
+<span>March on Quel'Danas</span>
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="content">
+
+<!-- VOID SPIRE -->
+
+<section id="voidspire" class="raid">
+
+<h2>The Voidspire</h2>
+
+<div class="boss">
+
+<div class="bossName" onclick="toggle(this)">Imperator Averzian</div>
+
+<div class="tactic">
+<img src="images/averzian.png" onclick="zoomImage(event,this)">
+</div>
+
+</div>
+
+
+<div class="boss">
+
+<div class="bossName" onclick="toggle(this)">Vorasius</div>
+
+<div class="tactic">
+<img src="images/vorasius.png" onclick="zoomImage(event,this)">
+</div>
+
+</div>
+
+
+<div class="boss">
+
+<div class="bossName" onclick="toggle(this)">Fallen-King Salhadaar</div>
+
+<div class="tactic">
+<img src="images/salhadaar.png" onclick="zoomImage(event,this)">
+</div>
+
+</div>
+
+
+<div class="boss">
+
+<div class="bossName" onclick="toggle(this)">Vaelgor & Ezzorak</div>
+
+<div class="tactic">
+<img src="images/vaelgor_ezzorak.png" onclick="zoomImage(event,this)">
+</div>
+
+</div>
+
+
+<div class="boss">
+
+<div class="bossName" onclick="toggle(this)">Lightblinded Vanguard</div>
+
+<div class="tactic">
+<img src="images/vanguard.png" onclick="zoomImage(event,this)">
+</div>
+
+</div>
+
+
+<div class="boss">
+
+<div class="bossName" onclick="toggle(this)">Crown of the Cosmos</div>
+
+<div class="tactic">
+<img src="images/crown.png" onclick="zoomImage(event,this)">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- DREAMRIFT -->
+
+<section id="dreamrift" class="raid">
+
+<h2>The Dreamrift</h2>
+
+<div class="boss">
+
+<div class="bossName" onclick="toggle(this)">Chimaerus</div>
+
+<div class="tactic">
+<img src="images/chimaerus.png" onclick="zoomImage(event,this)">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- QUELDANAS -->
+
+<section id="queldanas" class="raid">
+
+<h2>March on Quel'Danas</h2>
+
+<div class="boss">
+
+<div class="bossName" onclick="toggle(this)">Belo'ren</div>
+
+<div class="tactic">
+<img src="images/beloren.png" onclick="zoomImage(event,this)">
+</div>
+
+</div>
+
+
+<div class="boss">
+
+<div class="bossName" onclick="toggle(this)">Midnight Falls</div>
+
+<div class="tactic">
+<img src="images/midnightfalls.png" onclick="zoomImage(event,this)">
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ZOOM WINDOW -->
+
+<div id="zoomOverlay">
+<img id="zoomedImage">
+</div>
+
+
+<script>
+
+function openRaid(id){
+
+document.querySelectorAll(".raid")
+.forEach(r=>r.style.display="none")
+
+document.getElementById(id).style.display="block"
+
+}
+
+function toggle(el){
+
+let tactic=el.nextElementSibling
+
+tactic.style.display=
+tactic.style.display==="block" ? "none":"block"
+
+}
+
+let zoom=1
+let img=document.getElementById("zoomedImage")
+let overlay=document.getElementById("zoomOverlay")
+
+function zoomImage(e,image){
+
+e.stopPropagation()
+
+overlay.style.display="flex"
+
+img.src=image.src
+zoom=1
+
+img.style.transform="scale(1)"
+
+}
+
+overlay.addEventListener("wheel",e=>{
+
+e.preventDefault()
+
+zoom += e.deltaY * -0.0015
+
+zoom=Math.min(Math.max(.5,zoom),10)
+
+img.style.transform="scale("+zoom+")"
+
+})
+
+overlay.onclick=()=>overlay.style.display="none"
+
+openRaid("voidspire")
+
+</script>
+<footer class="credits">
+Big thanks to Questionably Epic for their PDF files.
+</footer>
+</body>
+</html>

@@ -1,0 +1,186 @@
+body{
+margin:0;
+font-family:Segoe UI;
+background:#05010c;
+color:white;
+}
+
+/* STARFIELD */
+
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(white 1px,transparent 1px);
+background-size:60px 60px;
+opacity:.15;
+animation:starMove 120s linear infinite;
+z-index:-2;
+}
+
+@keyframes starMove{
+from{transform:translateY(0)}
+to{transform:translateY(-1200px)}
+}
+
+/* SIDEBAR */
+
+.sidebar{
+position:fixed;
+width:260px;
+height:100%;
+background:linear-gradient(180deg,#070012,#020006);
+border-right:1px solid #7c3aed;
+padding:25px;
+box-shadow:0 0 40px #7c3aed33;
+}
+
+.sidebar h1{
+color:#c084ff;
+text-shadow:0 0 20px #7c3aed;
+}
+
+/* RAID BUTTONS */
+
+.raidButtons{
+list-style:none;
+padding:0;
+}
+
+.raidBtn{
+position:relative;
+height:90px;
+margin:15px 0;
+border-radius:8px;
+cursor:pointer;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+font-weight:600;
+color:white;
+background-size:cover;
+background-position:center;
+transition:.3s;
+}
+
+.raidBtn::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(
+to bottom,
+rgba(0,0,0,.3),
+rgba(0,0,0,.75)
+);
+}
+
+.raidBtn span{
+position:relative;
+z-index:2;
+text-shadow:0 0 10px black;
+}
+
+.raidBtn:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px #7c3aed;
+}
+
+/* BACKGROUNDS */
+
+.voidspire{
+background-image:url("images/voidspire.jpg");
+}
+
+.dreamrift{
+background-image:url("images/dreamrift.jpg");
+}
+
+.march{
+background-image:url("images/march.jpg");
+}
+
+/* CONTENT */
+
+.content{
+margin-left:300px;
+padding:40px;
+}
+
+.raid{
+margin-bottom:70px;
+}
+
+.raid h2{
+color:#c084ff;
+border-bottom:1px solid #7c3aed;
+padding-bottom:6px;
+}
+
+/* BOSS PANEL */
+
+.boss{
+background:rgba(15,0,30,.7);
+border:1px solid #7c3aed33;
+border-radius:10px;
+padding:18px;
+margin-bottom:16px;
+transition:.3s;
+}
+
+.boss:hover{
+box-shadow:0 0 18px #7c3aed66;
+transform:scale(1.02);
+}
+
+.bossName{
+font-size:18px;
+cursor:pointer;
+color:#e9d5ff;
+}
+
+.tactic{
+display:none;
+margin-top:12px;
+}
+
+.tactic img{
+width:260px;
+border-radius:6px;
+cursor:pointer;
+box-shadow:0 0 12px #7c3aed;
+}
+
+/* ZOOM */
+
+#zoomOverlay{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.95);
+justify-content:center;
+align-items:center;
+z-index:999;
+cursor:zoom-out;
+}
+
+#zoomedImage{
+max-width:none;
+transition:transform .05s linear;
+}
+
+/* FOOTER CREDITS */
+
+.credits{
+text-align:center;
+margin-left:260px;
+padding:30px;
+font-size:16px;
+color:#c084ff;
+opacity:.8;
+text-shadow:0 0 10px #7c3aed;
+}
